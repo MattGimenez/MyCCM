@@ -1,6 +1,4 @@
-import { InvokeFunctionExpr } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { Howl, Howler, Track } from 'howler';
 
 
 @Component({
@@ -10,13 +8,16 @@ import { Howl, Howler, Track } from 'howler';
 })
 export class Tab1Page {
 
-  howlaudio: Howler= './assets/audio/AUD-20200715-WA0045.mp3';
+  $audio = document.getElementsByTagName("audio");
 
   constructor() {}
 
   play () {
-    console.log("Tab1 play");
-    this.howlaudio.play();
+    this.$audio[0].play();
+  }
+
+  stop(){
+    this.$audio[0].pause();
   }
   
 }

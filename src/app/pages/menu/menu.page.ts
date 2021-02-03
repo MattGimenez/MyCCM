@@ -12,15 +12,15 @@ export class MenuPage implements OnInit {
   pages = [
     {
       title: 'Stream',
-      url: '/stream'
+      url: '/menu/stream'
     },
     {
       title: 'Contacto',
-      url: '/contacto'
+      url: '/menu/contacto'
     },
     {
       title: 'Ultimas Noticias',
-      url: '/noticias'
+      url: '/menu/noticias'
     }
   ];
 

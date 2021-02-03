@@ -6,24 +6,28 @@ import { MenuPage } from './menu.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'stream',
+    redirectTo: 'menu/stream',
     pathMatch: 'full'
   },
   {
-    path: 'stream',
-    loadChildren: () => import('../stream/stream.module').then(m => m.StreamPageModule),
+    path: 'menu',
     component: MenuPage,
-  },
-  {
-    path: 'contacto',
-    component: MenuPage,
-    loadChildren: () => import('../contacto/contacto.module').then(m => m.ContactoPageModule)
-  },
-  {
-    path: 'noticias',
-    component: MenuPage,
-    loadChildren: () => import('../noticias/noticias.module').then(m => m.NoticiasPageModule)
+    children: [
+      {
+        path: 'stream',
+        loadChildren: () => import('../stream/stream.module').then(m => m.StreamPageModule)
+      },
+      {
+        path: 'contacto',
+        loadChildren: () => import('../contacto/contacto.module').then(m => m.ContactoPageModule)
+      },
+      {
+        path: 'noticias',
+        loadChildren: () => import('../noticias/noticias.module').then(m => m.NoticiasPageModule)
+      }
+    ]
   }
+
 ];
 
 @NgModule({

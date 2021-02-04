@@ -1,14 +1,24 @@
-<ion-header>  
-  <ion-toolbar>  
-    <ion-buttons slot="start">  
-      <ion-menu-button color="dark"></ion-menu-button>   
-    </ion-buttons>  
-    <ion-title>  
-      En vivo
-    </ion-title>  
-  </ion-toolbar>   
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Ultimas noticias
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let item of studentsData">
+    <ion-card-header>
+      <!-- <img src='{{item._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url}}' alt=""> -->
+        <img *ngIf='item._embedded["wp:featuredmedia"]' src='{{item._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url}}' alt="">
+      <ion-card-subtitle>{{ item.date | date }}</ion-card-subtitle>
+      <ion-card-title>{{ item.title.rendered }}</ion-card-title>
+    </ion-card-header>
+    <!-- {{ item.excerpt.rendered }} -->
+    <ion-card-content [innerHTML]="item.excerpt.rendered"></ion-card-content>
+  </ion-card>
+  <ion-button expand="block" fill="outline " (click)="openPage()">Ver mas noticias</ion-button>
 </ion-content>
